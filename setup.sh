@@ -12,3 +12,5 @@ mv \{\{python_template\}\}/ $new_name/
 sed -i -e s/src/$new_name/ setup.py
 
 rm setup.sh
+git add .
+git commit -m 'initial commit'
