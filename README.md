@@ -1,6 +1,15 @@
+
 # python-template
+
 Template for python projects
 Mainly based on [goodresearch ](https://goodresearch.dev).
+
+## Usage
+Just run the following:
+```
+setup.sh [NEW_NAME]
+```
+This is going to replace the template {{python_template}} with the desired new library name
 
 ## Defines the structure of each project. 
 ```
