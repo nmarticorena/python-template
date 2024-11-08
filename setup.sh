@@ -10,6 +10,9 @@ new_name=$1
 
 mv \{\{python_template\}\}/ $new_name/
 sed -i -e s/src/$new_name/ setup.py
+sed -i -e s/src/$new_name/ pyproject.toml
+sed -i -e s/src/$new_name/ pixi.toml
+
 
 rm setup.sh
 git add .
