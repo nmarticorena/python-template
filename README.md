@@ -9,7 +9,9 @@ Just run the following:
 ```
 setup.sh [NEW_NAME]
 ```
-This is going to replace the template {{python_template}} with the desired new library name
+This is going to replace the template {{python_template}} with the desired new library name, and the respective placeholders in the setup tools. 
+The default pixi install considers the basic of pytorch and cuda12.0. This is quite specific so going to think to add more default solutions.
+
 
 ## Defines the structure of each project. 
 ```
