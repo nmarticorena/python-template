@@ -1,5 +1,4 @@
 [project]
-authors = ["nmarticorena <nicolas.marticorena.vidal@gmail.com>"]
 channels = ["conda-forge"]
 description = "Add a short description here"
 name = "src"
