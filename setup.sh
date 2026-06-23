@@ -117,7 +117,7 @@ write_pixi_toml() {
     fi
 
     if [[ "$include_pytorch" == "true" && "$use_cuda" == "true" ]]; then
-      printf "pytorch = {version = \">=2.4.0,<3\", build = \"cuda%s*\"}\n" "$cuda_build"
+      printf "pytorch = {version = \">=2.4.0,<3\", build = \"*cuda%s*\"}\n" "$cuda_build"
       printf "torchvision = \">=0.19.1,<0.20\"\n"
     elif [[ "$include_pytorch" == "true" ]]; then
       printf "pytorch = \">=2.4.0,<3\"\n"
@@ -174,7 +174,7 @@ platform_list="$(normalise_platforms "$platform_input")"
 
 include_pytorch=false
 use_cuda=false
-cuda_version="12.0"
+cuda_version="12.9"
 
 if prompt_yes_no "Install PyTorch" "y"; then
   include_pytorch=true
