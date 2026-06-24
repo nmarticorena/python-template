@@ -81,9 +81,8 @@ write_pixi_toml() {
   local package_name="$1"
   local python_spec="$2"
   local platform_list="$3"
-  local include_pytorch="$4"
-  local use_cuda="$5"
-  local cuda_version="$6"
+  local use_cuda="$4"
+  local cuda_version="$5"
   local cuda_major="${cuda_version%%.*}"
   local cuda_build
 
@@ -114,14 +113,6 @@ write_pixi_toml() {
 
     if [[ "$use_cuda" == "true" ]]; then
       printf "cuda = {version = \"%s.*\"}\n" "$cuda_major"
-    fi
-
-    if [[ "$include_pytorch" == "true" && "$use_cuda" == "true" ]]; then
-      printf "pytorch = {version = \">=2.4.0,<3\", build = \"*cuda%s*\"}\n" "$cuda_build"
-      printf "torchvision = \">=0.19.1,<0.20\"\n"
-    elif [[ "$include_pytorch" == "true" ]]; then
-      printf "pytorch = \">=2.4.0,<3\"\n"
-      printf "torchvision = \">=0.19.1,<0.20\"\n"
     fi
 
     printf "python = \"%s\"\n" "$python_spec"
@@ -188,7 +179,11 @@ fi
 mv "{{python_template}}" "$new_name"
 sed -i -e "s/name = 'src'/name = '${new_name}'/" setup.py
 sed -i -e "s/name = \"src\"/name = \"${new_name}\"/" pyproject.toml
-write_pixi_toml "$new_name" "$python_spec" "$platform_list" "$include_pytorch" "$use_cuda" "$cuda_version"
+write_pixi_toml "$new_name" "$python_spec" "$platform_list" "$use_cuda" "$cuda_version"
+
+if include_pytorch
+  pixi add pytorch torchvision
+fi
 
 if command -v pixi >/dev/null 2>&1 && prompt_yes_no "Run pixi install now" "n"; then
   pixi install
