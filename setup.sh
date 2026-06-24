@@ -97,7 +97,7 @@ write_pixi_toml() {
     printf "version = \"0.1.0\"\n"
     printf "\n"
     printf "[tasks]\n"
-    printf "develop = {cmd = [\"nvim\", \".\"]}\n"
+    printf "check = {cmd = [\"ruff\", \"check\", \".\"]}\n"
     printf "\n"
     printf "[pypi-options]\n"
     printf "no-build-isolation = []\n"
