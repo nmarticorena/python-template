@@ -199,7 +199,7 @@ if git rev-parse --is-inside-work-tree >/dev/null 2>&1 && prompt_yes_no "Create 
 
   if git diff --cached --quiet; then
     echo "No changes staged for commit."
-  elif ! git commit -m "initial commit"; then
+  elif ! git commit -m "initial project"; then
     echo "Initial commit failed. Check your git configuration and commit manually."
   fi
 fi
