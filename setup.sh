@@ -181,7 +181,7 @@ sed -i -e "s/name = 'src'/name = '${new_name}'/" setup.py
 sed -i -e "s/name = \"src\"/name = \"${new_name}\"/" pyproject.toml
 write_pixi_toml "$new_name" "$python_spec" "$platform_list" "$use_cuda" "$cuda_version"
 
-if include_pytorch; then
+if $include_pytorch; then
   echo "Adding PyTorch and torchvision to pixi.toml dependencies..."
   pixi add pytorch torchvision
 fi
